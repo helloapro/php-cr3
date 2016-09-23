@@ -29,10 +29,6 @@ This application allows users to add stylists as well as add clients under each 
     * input: patch "Mary Hannah" to "Mary Hannah Little Lamb"
     * output: "Mary Hannah Little Lamb"
 
-* Delete a Stylist.
-    * input: delete "Mary Hannah Little Lamb"
-    * output: ""
-
 * Delete all Clients.
     * input: clear all clients
     * output: ""
@@ -52,6 +48,10 @@ This application allows users to add stylists as well as add clients under each 
 * Return clients for a specific stylist.
     * input: "Mary Hannah"
     * output: ["April Peng", "Craig Campbell", "Brienne Butte"]
+
+* Delete a Stylist.
+    * input: delete "Mary Hannah Little Lamb"
+    * output: ""
 
 ## Known Bugs ##
 

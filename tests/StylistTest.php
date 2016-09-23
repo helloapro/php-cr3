@@ -41,6 +41,32 @@
             $this->assertEquals($id, $result);
         }
 
-        
+        function test_save()
+        {
+            //arrange
+            $name = "Mary Hannah";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            //act
+            $result = Stylist::getAll();
+            //assert
+            $this->assertEquals($test_stylist, $result[0]);
+        }
+
+        function test_getAll()
+        {
+            //arrange
+            $name = "Mary Hannah";
+            $name2 = "Leah Electric";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $test_stylist2 = new Stylist($name);
+            $test_stylist2->save();
+            //act
+            $result = Stylist::getAll();
+            //assert
+            $this->assertEquals([$test_stylist,$test_stylist2],$result);
+
+        }
     }
 ?>
