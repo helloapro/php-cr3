@@ -66,7 +66,17 @@
             $result = Stylist::getAll();
             //assert
             $this->assertEquals([$test_stylist,$test_stylist2],$result);
+        }
 
+        function test_edited_stylist()
+        {
+            //arrange
+            $name = "Mary Hannah";
+            $updated_name = "Mary Hannah Little Lamb";
+            //act
+            $result = Stylist::getAll();
+            //assert
+            $this->assertEquals([$test_stylist,$test_stylist2],$result);
         }
     }
 ?>

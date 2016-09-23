@@ -15,6 +15,7 @@
         function setName($new_name)
         {
             $this->name = (string) $new_name;
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$this->name}' WHERE id = {$this->id};");
         }
 
         function getName()
@@ -33,6 +34,11 @@
             $GLOBALS['DB']->exec("INSERT INTO stylists(name) VALUES ('{$this->getName()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
+
+        // function deleteStylist()
+        // {
+        //
+        // }
 
 //static methods
         static function getAll()
