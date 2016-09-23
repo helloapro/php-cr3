@@ -29,18 +29,18 @@
             $this->assertEquals($name, $result);
         }
 
-        // function test_save()
-        // {
-        //     //arrange
-        //     $name = "Mary Hannah";
-        //     $test_stylist = new Stylist($name);
-        //     $test_stylist->save();
-        //
-        //     //act
-        //     $result = Stylist::getAll();
-        //
-        //     //assert
-        //     $this->assertEquals($test_stylist, $result[0]);
-        // }
+        function test_getId()
+        {
+            //arrange
+            $name = "Mary Hannah";
+            $id = 1;
+            $test_stylist = new Stylist($name, $id);
+            //act
+            $result = $test_stylist->getId();
+            //assert
+            $this->assertEquals($id, $result);
+        }
+
+        
     }
 ?>
