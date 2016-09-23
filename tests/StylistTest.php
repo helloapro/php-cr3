@@ -73,6 +73,8 @@
             //arrange
             $name = "Mary Hannah";
             $updated_name = "Mary Hannah Little Lamb";
+            $test_stylist = new Stylist($name);
+            $test 
             //act
             $result = Stylist::getAll();
             //assert
