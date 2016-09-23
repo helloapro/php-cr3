@@ -17,34 +17,41 @@ This application allows users to add stylists as well as add clients under each 
 * Open a browser and go to the address http://localhost:8000 to view the application
 
 ## Specifications ##
+* Add, save, and get a Stylist.
+    * input1: "Mary Hannah"
+    * output: "Mary Hannah"
 
-<!-- * Add, save, and get a Cuisine type.
-    * input1: "Mac and Cheese"
-    * output: "Mac and Cheese"
-
-* Edit a Cuisine type.
-    * input1: "Mac & Cheese"
-    * output: "Mac & Cheese"
-
-* Delete a Cuisine type.
-    * input1: delete "Mac & Cheese"
+* Delete all Stylists.
+    * input: clear all stylists
     * output: ""
 
-* Add, save, and get a Restaurant.
-    * input1: "Macaroon Grill"
-    * output: "Macaroon Grill"
+* Edit a Stylist.
+    * input: patch "Mary Hannah" to "Mary Hannah Little Lamb"
+    * output: "Mary Hannah Little Lamb"
 
-* Edit a Restaurant.
-    * input1: "Macaroni Grill"
-    * output: "Macaroni Grill"
-
-* Delete a Restaurant.
-    * input1: delete "Macaroni Grill"
+* Delete a Stylist.
+    * input: delete "Mary Hannah Little Lamb"
     * output: ""
 
-* Return restaurants within a Cuisine type.
-    * input1: "Mac & Cheese"
-    * output: "Macaroni Grill" -->
+* Add, save, and get a Client.
+    * input: "Liza Dogooder"
+    * output: "Liza Dogooder"
+
+* Delete all Clients.
+    * input: clear all clients
+    * output: ""
+
+* Edit a Client.
+    * input: patch "Liza Dogooder" to "Liza Danger"
+    * output: "Liza Danger"
+
+* Delete a Client.
+    * input: delete "Liza Danger"
+    * output: ""
+
+* Return clients for a specific stylist.
+    * input: "Mary Hannah"
+    * output: ["April Peng", "Craig Campbell", "Brienne Butte"]
 
 ## Known Bugs ##
 
