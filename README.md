@@ -17,13 +17,13 @@ This application allows users to add stylists as well as add clients under each 
 * Open a browser and go to the address http://localhost:8000 to view the application
 
 ## Specifications ##
-* Add, save, and get a Stylist.
-    * input1: "Mary Hannah"
-    * output: "Mary Hannah"
-
 * Delete all Stylists.
     * input: clear all stylists
     * output: ""
+
+* Add, save, and get a Stylist.
+    * input1: "Mary Hannah"
+    * output: "Mary Hannah"
 
 * Edit a Stylist.
     * input: patch "Mary Hannah" to "Mary Hannah Little Lamb"
@@ -33,13 +33,13 @@ This application allows users to add stylists as well as add clients under each 
     * input: delete "Mary Hannah Little Lamb"
     * output: ""
 
-* Add, save, and get a Client.
-    * input: "Liza Dogooder"
-    * output: "Liza Dogooder"
-
 * Delete all Clients.
     * input: clear all clients
     * output: ""
+
+* Add, save, and get a Client.
+    * input: "Liza Dogooder"
+    * output: "Liza Dogooder"
 
 * Edit a Client.
     * input: patch "Liza Dogooder" to "Liza Danger"
