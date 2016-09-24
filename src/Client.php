@@ -46,6 +46,24 @@
         //
         // }
 
+        function getClientById($id)
+        {
+            $get_client_by_id = null;
+            $clients = Client::getAll();
+            foreach($clients as $client) {
+                $client_id = $client->getId();
+                if ($client_id == $id) {
+                    $get_client_by_id = $client;
+                }
+            }
+            return $get_client_by_id;
+        }
+
+        function deleteClient()
+        {
+            $GLOBALS['DB']->EXEC("DELETE FROM clients WHERE id = $this->id;");
+        }
+
 //static methods
         static function getAll()
         {
