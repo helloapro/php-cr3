@@ -41,11 +41,6 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        // function deleteClient()
-        // {
-        //
-        // }
-
         function getClientById($id)
         {
             $get_client_by_id = null;

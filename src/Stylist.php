@@ -71,5 +71,26 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
+
+        static function find($stylist_name)
+        {
+            $stylists = Stylist::getAll();
+            $stylist_id = null;
+            foreach($stylists as $stylist) {
+                if ($stylist->getName() == $stylist_name) {
+                    $stylist_id = $stylist->getId();
+                }
+            }
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$stylist_id};");
+            $clients = array();
+            foreach($returned_clients as $client) {
+                $name = $client['name'];
+                $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
+                $new_client = new Client($name, $stylist_id, $id);
+                array_push($clients, $new_client);
+            }
+            return $clients;
+        }
     }
 ?>
