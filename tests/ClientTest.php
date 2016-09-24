@@ -71,6 +71,17 @@
             //assert
             $this->assertEquals([$test_client,$test_client2],$result);
         }
-        
+
+        function test_edited_client()
+        {
+            //arrange
+            $name = "Liza Dogooder";
+            $test_client = new Client($name, 3);
+            //act
+            $updated_name = "Liza Danger";
+            $test_client = new Client($updated_name, 3);
+            //assert
+            $this->assertEquals($updated_name,$test_client->getName());
+        }
     }
 ?>
