@@ -41,43 +41,36 @@
             $this->assertEquals($id, $result);
         }
 
-        // function test_save()
-        // {
-        //     //arrange
-        //     $name = "Liza Dogooder";
-        //     $test_client = new Client($name, 3);
-        //     $test_client->save();
-        //     //act
-        //     $result = Client::getAll();
-        //     //assert
-        //     $this->assertEquals($test_client, $result[0]);
-        // }
-        //
-        // function test_getAll()
-        // {
-        //     //arrange
-        //     $name = "Liza Dogooder";
-        //     $name2 = "April Peng";
-        //     $test_client = new Client($name, 3);
-        //     $test_client->save();
-        //     $test_client2 = new Client($name2, 1);
-        //     $test_client2->save();
-        //     //act
-        //     $result = Client::getAll();
-        //     //assert
-        //     $this->assertEquals([$test_client,$test_client2],$result);
-        // }
-        //
-        // function test_edited_client()
-        // {
-        //     //arrange
-        //     $name = "Liza Dogooder";
-        //     $test_client = new Client($name);
-        //     //act
-        //     $updated_name = "Liza Danger";
-        //     $test_client = new Client($updated_name);
-        //     //assert
-        //     $this->assertEquals($updated_name,$test_client->getName());
-        // }
+        function test_save()
+        {
+            //arrange
+            $name = "Liza Dogooder";
+            $test_client = new Client($name, 3);
+            $test_client->save();
+            $name2 = "April Peng";
+            $test_client2 = new Client($name2, 1);
+            $test_client2->save();
+            //act
+            $result = Client::getAll();
+            //assert
+            $this->assertEquals([$test_client, $test_client2], $result);
+
+        }
+
+        function test_getAll()
+        {
+            //arrange
+            $name = "Liza Dogooder";
+            $name2 = "April Peng";
+            $test_client = new Client($name, 3);
+            $test_client->save();
+            $test_client2 = new Client($name2, 1);
+            $test_client2->save();
+            //act
+            $result = Client::getAll();
+            //assert
+            $this->assertEquals([$test_client,$test_client2],$result);
+        }
+        
     }
 ?>
