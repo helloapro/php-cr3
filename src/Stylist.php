@@ -35,10 +35,23 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        // function deleteStylist()
-        // {
-        //
-        // }
+        function getStylistById($id)
+        {
+            $get_stylist_by_id = null;
+            $stylists = Stylist::getAll();
+            foreach($stylists as $stylist) {
+                $stylist_id = $stylist->getId();
+                if ($stylist_id == $id) {
+                    $get_stylist_by_id = $stylist;
+                }
+            }
+            return $get_stylist_by_id;
+        }
+
+        function deleteStylist()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = $this->id;");
+        }
 
 //static methods
         static function getAll()
