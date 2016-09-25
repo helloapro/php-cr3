@@ -10,7 +10,23 @@
 
     $app = new Silex\Application();
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
+    $app['debug'] = true;
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
+
+    $app->get("/", function() use ($app) {
+        return $app['twig']->render('home.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->post("/add_stylist", function() use ($app) {
+        $stylist = new Stylist($_POST['stylist_name']);
+        $stylist->save();
+        return $app->redirect('/');
+    });
+    
 
 
 
