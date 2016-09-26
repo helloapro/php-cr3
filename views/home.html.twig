@@ -37,7 +37,36 @@
             <h3>Stylists:</h3>
             <ul>
                 {% for stylist in stylists %}
-                    <li><a class="stylistList" href="stylists_list/{{ stylist.getId }}>{{ stylist.getName }}"</a></li>
+                    <li>
+                    <a href='#{{ stylist.getId }}' data-toggle="modal">✏️  </a>
+                    <a class="stylistList" href="/client_list/{{ stylist.getId }}">{{ stylist.getName }}</a>
+                        <!-- Modal -->
+                        <div class="modal fade " id="{{ stylist.getId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/edit_stylist/{{ stylist.getId }}" class='form-inline' method='post'>
+                                            <div class='form-group form-horizontal'>
+                                                <input name="stylist_name" class='form form-control' type='text' placeholder='update stylist name'>
+                                                <input name="_method" type="hidden" value="patch">
+                                                <button class='btn btn-warning btn-sm' type='submit'>Submit Changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/delete_stylist/{{ stylist.getId }}" method="post">
+                                            <input name="_method" type="hidden" value="delete">
+                                            <button type="submit" class='btn btn-danger btn-sm pull-left'>Delete Stylist</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                 {% endfor %}
             </ul>
         </div>

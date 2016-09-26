@@ -15,11 +15,11 @@
             {% if clients is not empty %}
                 <ul>
                     {% for client in clients %}
-                        <li><a class="clientList" href="clients_list/{{ client.getId }}>{{ client.getName }}"</a></li>
+                        <li>{{ client.getName }}</li>
                     {% endfor %}
                 </ul>
                 {% else %}
-                <p>There are no clients for {{ stylist.getName }} yet!</p>
+                <p>There are no clients for this stylist yet!</p>
             {% endif %}
         </div>
     </body>

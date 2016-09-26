@@ -28,8 +28,29 @@
         return $app->redirect('/');
     });
 
+    $app->patch("/edit_stylist/{stylist_id}", function($stylist_id) use ($app) {
+        $stylist = Stylist::getStylistById($stylist_id);
+        $new_name = $_POST['stylist_name'];
+        $stylist->setName($new_name);
+        return $app->redirect('/');
+    });
 
+    $app->delete("/delete_stylist/{stylist_id}", function($stylist_id) use ($app) {
+        $stylist = Stylist::getStylistById($stylist_id);
+        $stylist->deleteStylist();
+        return $app->redirect('/');
+    });
 
+    $app->post("/add_client", function() use ($app) {
+        $client = new Client($_POST['client_name'], $_POST['stylist_id']);
+        $client->save();
+        return $app->redirect('/');
+    });
+
+    $app->get("/client_list/{stylist_id}", function($stylist_id) use ($app) {
+        $filtered_clients = Stylist::find($stylist_name);
+        return $app['twig']->render('clients-list.html.twig', array('clients' => $filtered_clients));
+    });
 
     return $app;
 ?>
