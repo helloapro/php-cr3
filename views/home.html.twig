@@ -18,15 +18,28 @@
             <form class="form-group" action="/add_stylist" method="post">
                 <label id="new_stylist" for="stylist_name">Input Stylist's full name:</label>
                 <input id="new_stylist" type="text" name="stylist_name">
+                <button type="submit" class="btn-primary">Submit your stylist!</button>
             </form>
 
             <h5>Add yourself as a Client</h5>
-            <form class="form-group" action="/add_stylist" method="post">
+            <form class="form-group" action="/add_client" method="post">
                 <label id="new_client" for="client_name">Input your full name:</label>
                 <input id="new_client" type="text" name="client_name">
+                <h6>Which stylist would you like?</h6>
+                <select id = "selectStylist" class="" name="stylist_id">
+                    {% for stylist in stylists %}
+                        <option value= {{ stylist.getId }}>{{ stylist.getName }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn-primary">Submit yoself</button>
             </form>
 
-
+            <h3>Stylists:</h3>
+            <ul>
+                {% for stylist in stylists %}
+                    <li><a class="stylistList" href="stylists_list/{{ stylist.getId }}>{{ stylist.getName }}"</a></li>
+                {% endfor %}
+            </ul>
         </div>
 
     </body>
