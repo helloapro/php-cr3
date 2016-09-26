@@ -55,7 +55,7 @@ This application allows users to add stylists as well as add clients under each 
 
 ## Known Bugs ##
 
-There are no known bugs at this time.
+Clients are not returning as a proper list when Stylist names are clicked. 
 
 ## Languages/Technologies Used ##
 
