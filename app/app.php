@@ -41,6 +41,12 @@
         return $app->redirect('/');
     });
 
+    $app->get("/delete_all_stylists", function() use ($app) {
+        Stylist::deleteAll();
+        Client::deleteAll();
+        return $app->redirect('/');
+    });
+
     $app->post("/add_client", function() use ($app) {
         $client = new Client($_POST['client_name'], $_POST['stylist_id']);
         $client->save();
