@@ -42,7 +42,7 @@
                 {% for stylist in stylists %}
                     <li>
                     <a href='#{{ stylist.getId }}' data-toggle="modal">✏️  </a>
-                    <a class="stylistList" href="/client_list/{{ stylist.getId }}">{{ stylist.getName }}</a>
+                    <a class="stylistList" href="/client_list/{{ stylist.getName }}">{{ stylist.getName }}</a>
                         <!-- Modal -->
                         <div class="modal fade " id="{{ stylist.getId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">

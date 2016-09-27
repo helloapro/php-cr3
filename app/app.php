@@ -53,7 +53,7 @@
         return $app->redirect('/');
     });
 
-    $app->get("/client_list/{stylist_id}", function($stylist_id) use ($app) {
+    $app->get("/client_list/{stylist_name}", function($stylist_name) use ($app) {
         $filtered_clients = Stylist::find($stylist_name);
         return $app['twig']->render('clients-list.html.twig', array('clients' => $filtered_clients));
     });
