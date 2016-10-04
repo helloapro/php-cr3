@@ -45,6 +45,20 @@
             $this->setName($new_name);
         }
 
+        function getClients()
+        {
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$stylist_id};");
+            $clients = array();
+            foreach($returned_clients as $client) {
+                $name = $client['name'];
+                $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
+                $new_client = new Client($name, $stylist_id, $id);
+                array_push($clients, $new_client);
+            }
+            return $clients;
+        }
+
 //static methods
         static function getAll()
         {
@@ -64,25 +78,16 @@
             $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
 
-        static function find($stylist_name)
+        static function find($search_id)
         {
-            $stylists = Stylist::getAll();
-            $stylist_id = null;
-            foreach($stylists as $stylist) {
-                if ($stylist->getName() == $stylist_name) {
-                    $stylist_id = $stylist->getId();
+            $returned_stylists = Stylist::getAll();
+            $found_stylist = null;
+            foreach($returned_stylists as $stylist) {
+                if ($stylist->getId() == $search_id) {
+                    $found_stylist = $stylist;
                 }
             }
-            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$stylist_id};");
-            $clients = array();
-            foreach($returned_clients as $client) {
-                $name = $client['name'];
-                $stylist_id = $client['stylist_id'];
-                $id = $client['id'];
-                $new_client = new Client($name, $stylist_id, $id);
-                array_push($clients, $new_client);
-            }
-            return $clients;
+            return $found_stylist;
         }
     }
 ?>
