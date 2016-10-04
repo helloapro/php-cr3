@@ -7,7 +7,7 @@
     require_once 'src/Stylist.php';
     require_once 'src/Client.php';
 
-    $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
+    $server = 'mysql:host=localhost;dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -69,16 +69,17 @@
             $this->assertEquals([$test_stylist,$test_stylist2],$result);
         }
 
-        function test_edited_setName()
+        function test_update()
         {
             //arrange
             $name = "Mary Hannah";
             $test_stylist = new Stylist($name);
+            $test_stylist->save();
             //act
-            $updated_name = "Mary Hannah Little Lamb";
-            $test_stylist = new Stylist($updated_name);
+            $new_name = "Mary Hannah Little Lamb";
+            $test_stylist->update($new_name);
             //assert
-            $this->assertEquals($updated_name,$test_stylist->getName());
+            $this->assertEquals($new_name, $test_stylist->getName());
         }
 
         function test_deleteStylist()
