@@ -41,7 +41,7 @@
 
         function update($new_name)
         {
-            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$this->name}' WHERE id = {$this->id};");
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->id};");
             $this->setName($new_name);
         }
 

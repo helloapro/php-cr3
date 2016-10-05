@@ -4,7 +4,7 @@
     require_once __DIR__.'/../src/Stylist.php';
     require_once __DIR__.'/../src/Client.php';
 
-    $server = 'mysql:host=localhost;dbname=hair_salon';
+    $server = 'mysql:host=localhost:8889;dbname=hair_salon';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
@@ -28,15 +28,14 @@
         return $app->redirect('/');
     });
 
-    $app->patch("/edit_stylist/{stylist_id}", function($stylist_id) use ($app) {
-        $stylist = Stylist::getStylistById($stylist_id);
-        $new_name = $_POST['stylist_name'];
-        $stylist->setName($new_name);
+    $app->patch("/edit_stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $stylist->update($_POST['stylist_name']);
         return $app->redirect('/');
     });
 
-    $app->delete("/delete_stylist/{stylist_id}", function($stylist_id) use ($app) {
-        $stylist = Stylist::getStylistById($stylist_id);
+    $app->delete("/delete_stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
         $stylist->deleteStylist();
         return $app->redirect('/');
     });
@@ -53,9 +52,21 @@
         return $app->redirect('/');
     });
 
-    $app->get("/client_list/{stylist_name}", function($stylist_name) use ($app) {
-        $filtered_clients = Stylist::find($stylist_name);
-        return $app['twig']->render('clients-list.html.twig', array('clients' => $filtered_clients));
+    $app->get("/client_list/{id}", function($id) use ($app) {
+        $found_stylist = Stylist::find($id);
+        return $app['twig']->render('clients-list.html.twig', array('clients' => $found_stylist->getClients()));
+    });
+
+    $app->patch("/edit_client/{id}", function($id) use ($app) {
+        $client = Client::find($id);
+        $client->update($_POST['client_name']);
+        return $app->redirect('/');
+    });
+
+    $app->delete("/delete_client/{id}", function($id) use ($app) {
+        $client = Client::find($id);
+        $client->deleteClient();
+        return $app->redirect('/');
     });
 
     return $app;

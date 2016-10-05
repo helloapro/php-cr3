@@ -15,14 +15,43 @@
             {% if clients is not empty %}
                 <ul>
                     {% for client in clients %}
-                        <li>{{ client.getName }}</li>
+                        <li>
+                            <a href='#{{ client.getId }}' data-toggle="modal">✏️  </a>
+                            {{ client.getName }}
+                            <!-- Modal -->
+                            <div class="modal fade " id="{{ client.getId }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">{{ client.getName }}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/edit_client/{{ client.getId }}" class='form-inline' method='post'>
+                                                <div class='form-group form-horizontal'>
+                                                    <input name="client_name" class='form form-control' type='text' placeholder='update client name'>
+                                                    <input name="_method" type="hidden" value="patch">
+                                                    <button class='btn btn-warning btn-sm' type='submit'>Submit Changes</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form action="/delete_client/{{ client.getId }}" method="post">
+                                                <input name="_method" type="hidden" value="delete">
+                                                <button type="submit" class='btn btn-danger btn-sm pull-left'>Delete Client</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     {% endfor %}
                 </ul>
                 {% else %}
                 <p>There are no clients for this stylist yet!</p>
             {% endif %}
 
-            <a href="/">Home</a> 
+            <a href="/">Home</a>
         </div>
     </body>
 </html>

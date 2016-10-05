@@ -41,19 +41,6 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-        function getClientById($id)
-        {
-            $get_client_by_id = null;
-            $clients = Client::getAll();
-            foreach($clients as $client) {
-                $client_id = $client->getId();
-                if ($client_id == $id) {
-                    $get_client_by_id = $client;
-                }
-            }
-            return $get_client_by_id;
-        }
-
         function deleteClient()
         {
             $GLOBALS['DB']->EXEC("DELETE FROM clients WHERE id = $this->id;");
@@ -61,7 +48,7 @@
 
         function update($new_name)
         {
-            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$this->name}' WHERE id = {$this->id};");
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_name}' WHERE id = {$this->id};");
             $this->setName($new_name);
         }
 
@@ -83,6 +70,19 @@
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM clients;");
+        }
+
+        static function find($id)
+        {
+            $returned_clients = Client::getAll();
+            $get_client_by_id = null;
+            foreach($returned_clients as $client) {
+                $client_id = $client->getId();
+                if ($client_id == $id) {
+                    $get_client_by_id = $client;
+                }
+            }
+            return $get_client_by_id;
         }
     }
 ?>
